@@ -1,5 +1,7 @@
-FROM debian:jessie
-MAINTAINER  Robin Schneider <ypid@riseup.net>
+FROM resin/rpi-raspbian:jessie
+MAINTAINER na-g <na-g@nostrum.com>
+LABEL na-g.owncloud.version="8.1.3"
+# MAINTAINER  Robin Schneider <ypid@riseup.net>
 # MAINTAINER silvio <silvio@port1024.net>
 # MAINTAINER Josh Chaney <josh@chaney.io>
 

@@ -1,3 +1,6 @@
+# FORK WARNING
+This is a fork of the jchaney owncloud docker image. It has been altered to build on Raspbian, for the RaspberryPi. Non-sqlite is not yet working. Perhaps with ARG in Docker 1.9 the FROM can be parameterized and this fork will be unecessary.
+
 # docker-owncloud
 
 Docker image for [ownCloud][] with security in mind.
