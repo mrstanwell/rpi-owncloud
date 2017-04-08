@@ -5,7 +5,7 @@ DOCKER_RUN_OPTIONS ?= --env "TZ=Europe/Berlin"
 docker_owncloud_http_port    ?= 80
 docker_owncloud_https_port   ?= 443
 docker_owncloud_in_root_path ?= 1
-docker_owncloud_permanent_storage ?= /tmp/owncloud
+docker_owncloud_permanent_storage ?= /var/lib/jchaney/owncloud
 docker_owncloud_ssl_cert ?= /etc/ssl/certs/ssl-cert-snakeoil.pem
 docker_owncloud_ssl_key  ?= /etc/ssl/private/ssl-cert-snakeoil.key
 docker_owncloud_servername ?= localhost
@@ -109,9 +109,7 @@ owncloud-mariadb:
 
 owncloud-mariadb-get-pw:
 	docker exec owncloud-mariadb \
-		sh -c '(env | egrep "^MYSQL_USER="; \
-				env | egrep "^MYSQL_(DATABASE|PASSWORD)="; \
-			) | sed "s/=/: /"; \
+		sh -c 'env | egrep "^MYSQL_" | sed "s/=/: /"; \
 			echo "Database host: db"'
 
 owncloud-mariadb-cli:
@@ -132,5 +130,8 @@ owncloud-dev:
 		--volume "$(docker_owncloud_permanent_storage)-dev/config:/owncloud" \
 		--publish $(docker_owncloud_http_port):80 \
 		--publish ""$(docker_owncloud_https_port):443 \
+		--volume "$(PWD)/debugging/phpinfo.php:/var/www/owncloud/phpinfo.php" \
 		--env "OWNCLOUD_IN_ROOTPATH=$(docker_owncloud_in_root_path)" \
 		$(image_owncloud)
+		# --volume "$(PWD)/configs/php_uploads.ini:/etc/php5/fpm/conf.d/uploads.ini" \
+		# --volume "$(PWD)/configs/htaccess_uploads:/var/www/owncloud/.htaccess_upload" \
