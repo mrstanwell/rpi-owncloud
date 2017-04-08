@@ -28,6 +28,7 @@ RUN DEBIAN_FRONTEND=noninteractive ;\
         php5-sqlite \
         smbclient \
         sudo \
+        ca-certificates \
         wget
 
 ## Check latest version: https://github.com/owncloud/core/wiki/Maintenance-and-Release-Schedule
