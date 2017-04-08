@@ -1,6 +1,6 @@
 FROM resin/rpi-raspbian:jessie
-MAINTAINER na-g <na-g@nostrum.com>
-LABEL na-g.owncloud.version="8.1.3"
+MAINTAINER mrstanwell <mrstanwell@gmail.com>
+LABEL mrstanwell.owncloud.version="9.0.8"
 # MAINTAINER  Robin Schneider <ypid@riseup.net>
 # MAINTAINER silvio <silvio@port1024.net>
 # MAINTAINER Josh Chaney <josh@chaney.io>
